@@ -1,3 +1,11 @@
+{{
+  config(
+    materialized='table',
+    dist='order_id',
+    sort=['ordered_at', 'order_id']
+  )
+}}
+
 with
 
 orders as (
