@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: metricflow_time_spine
+    description: "Dates for spine"
+    columns:
+      - name: date_day
+        data_type: date
+        description: "The date of the day"
