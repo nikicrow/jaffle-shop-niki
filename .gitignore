@@ -1,6 +1,7 @@
 .venv
 venv
 .env
+**/.env
 env
 
 target/
@@ -14,3 +15,7 @@ profiles.yml
 
 .ruff_cache
 __pycache__
+
+# Data quality audit outputs and logs
+data_quality_reports/
+data_quality_audit.log
