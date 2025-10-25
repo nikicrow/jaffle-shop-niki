@@ -1,5 +1,17 @@
 """
-Bedrock Client for generating data quality tests using Claude.
+**Purpose**: Calls AWS Bedrock (Claude) to generate intelligent data quality tests
+**Key Features**:
+ - generate_tests(): Main method that orchestrates test generation
+ - _build_prompt(): Constructs a detailed prompt for Claude with:
+   - Model SQL code
+   - Column metadata (names, types, nullability, descriptions)
+   - Sample data (first 5 rows)
+   - Table statistics (row counts, null counts, distinct counts)
+   - Dependencies on upstream models
+   - Instructions to generate 10-15 tests across 7 categories
+ - _invoke_bedrock(): Makes the API call to Bedrock using boto3
+ - _parse_response(): Extracts and validates JSON array of test definitions from Claude's response
+**Output**: Returns structured test definitions with: test_name, test_category, test_description, test_query, severity
 """
 
 import json

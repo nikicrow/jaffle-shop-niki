@@ -1,10 +1,22 @@
 """
-Configuration for the Data Quality Audit System.
+**Purpose**: Centralized configuration for all connection settings and parameters
+**Key Features**:
+ - Redshift connection settings (host, port, database, user, password, schema)
+ - dbt project paths (points to your local models/marts/ directory)
+ - AWS Bedrock settings (region: ap-southeast-2, model: Claude 3.5 Sonnet)
+ - S3 configuration placeholders (for future Lambda deployment)
+ - Test execution settings (max defect examples: 5, query timeout: 5 minutes)
+ - List of mart models to audit: customers, orders, order_items, products, supplies, locations
+**Security**: Uses environment variables for sensitive credentials (never commits passwords to Git)
 
 TODO: Update these values with your actual AWS and Redshift details.
 """
 
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Redshift Connection Settings
 # IMPORTANT: Never commit credentials to Git!
@@ -43,7 +55,7 @@ OUTPUT_DIR = os.path.join(DBT_PROJECT_ROOT, "data_quality_reports")
 
 # Test Execution Settings
 MAX_DEFECT_EXAMPLES = 5  # Number of example defects to capture per test
-TEST_QUERY_TIMEOUT = 300  # Query timeout in seconds (5 minutes)
+TEST_QUERY_TIMEOUT = 30  # Query timeout in seconds (30 seconds)
 
 # Mart Models to Audit
 MART_MODELS = [

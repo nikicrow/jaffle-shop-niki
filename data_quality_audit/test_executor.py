@@ -1,5 +1,16 @@
 """
-Test Executor for running data quality tests and capturing defects.
+Purpose: Executes the AI-generated test queries against Redshift and captures defects
+
+Key Features:
+ - execute_tests(): Runs all test definitions and returns results
+ - _execute_single_test(): Executes one test query and determines:
+   - defect_count: Number of rows returned (empty = PASS, any rows = FAIL)
+   - defect_examples: Formatted sample of defective records
+   - status: PASS, FAIL, or ERROR
+   - notes: Human-readable summary of results
+ - _generate_notes(): Creates contextual notes based on test category
+ - get_summary(): Aggregates statistics (total tests, passed, failed, errors, critical failures, etc.)
+Logic: Tests return rows WHERE defects exist, so 0 rows = PASS, >0 rows = FAIL
 """
 
 import logging

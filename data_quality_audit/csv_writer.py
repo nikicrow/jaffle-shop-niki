@@ -1,5 +1,15 @@
 """
-CSV Writer for generating data quality report CSV files.
+**Purpose**: Generates CSV reports from test results
+**Key Features**:
+ - write_report(): Creates individual model CSV report with columns:
+   - test_name, test_category, test_description, test_query
+   - defect_count, defect_examples, status, severity, notes, execution_timestamp
+ - write_summary_report(): Creates aggregate summary CSV across all models with:
+   - model_name, total_tests, passed, failed, errors
+   - total_defects, critical_failures, high_failures
+ - Adds timestamps to filenames for versioning
+ - Creates output directory if it doesn't exist
+ - Handles CSV escaping for special characters in defect examples
 """
 
 import os

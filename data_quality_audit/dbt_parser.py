@@ -1,5 +1,14 @@
 """
-dbt Parser for reading and analyzing dbt model files.
+**Purpose**: Reads and analyzes dbt model files (both SQL and YAML)
+**Key Features**:
+ - get_model_sql(): Reads the SQL file for a model
+ - get_model_yaml(): Reads the YAML schema file
+ - extract_ref_models(): Uses regex to find {{ ref('model_name') }} dependencies
+ - extract_config(): Parses {{ config(...) }} blocks for materialization settings
+ - get_column_descriptions(): Extracts column descriptions from YAML
+ - get_existing_tests(): Extracts existing dbt tests from YAML
+ - parse_model(): Main method that combines all the above into comprehensive model context
+ - list_mart_models(): Lists all SQL models in the marts directory
 """
 
 import os

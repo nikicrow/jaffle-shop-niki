@@ -87,9 +87,9 @@ export REDSHIFT_PASSWORD=your_password
 
 Only edit `config.py` if you need to change the AWS region:
 ```python
-BEDROCK_CONFIG = {
-    "region": "us-east-1",  # Change if your AWS region is different
-    "model_id": "anthropic.claude-3-5-sonnet-20241022-v2:0",
+{
+"region": "ap-southeast-2",  # Change if your AWS region is different
+"model_id": "anthropic.claude-3-5-sonnet-20241022-v2:0",
 }
 ```
 

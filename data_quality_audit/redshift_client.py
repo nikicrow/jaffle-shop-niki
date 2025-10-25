@@ -1,5 +1,14 @@
 """
-Redshift Client for querying metadata and executing test queries.
+**Purpose**: Connects to Redshift and executes queries to get metadata and test results
+**Key Features**:
+ - connect() / close(): Manages database connections using psycopg2
+ - Context manager support (with RedshiftClient() as client:)
+ - get_table_metadata(): Queries information_schema.columns for column names, data types, nullability
+ - get_table_stats(): Gets row counts, null counts, and distinct value counts for each column
+ - get_sample_data(): Retrieves first 10 rows as sample data
+ - execute_query(): Executes any SQL query and returns results as list of dicts
+ - format_defect_examples(): Formats query results into semicolon-delimited strings like "col1=val1, col2=val2; col1=val3, col2=val4"
+ - test_connection(): Verifies connection is working
 """
 
 import logging

@@ -1,5 +1,21 @@
 """
-Main script for running data quality audits on dbt mart models.
+**Purpose**: Main entry point that orchestrates the entire audit workflow
+**Key Features**:
+- Command-line interface:
+  - python main.py → audits all mart models
+  - python main.py customers → audits single model
+  - python main.py customers orders → audits specific models
+ - audit_model(): Main workflow for a single model:
+   - Parse dbt model
+   - Fetch Redshift metadata
+   - Fetch Redshift statistics
+   - Fetch sample data
+   - Generate tests with Bedrock/Claude
+   - Execute tests
+   - Write CSV report
+- main(): Orchestrates audits across multiple models
+- Logging to both console and data_quality_audit.log file
+- Error handling with graceful failures (skips models with errors)
 
 Usage:
     python main.py                    # Audit all mart models
